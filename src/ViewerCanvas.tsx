@@ -167,7 +167,7 @@ export default class ViewerCanvas extends React.Component<ViewerCanvasProps, Vie
     return (
       <div
       className={`${this.props.prefixCls}-canvas`}
-      onMouseDown={this.handleCanvasMouseDown}
+      onClick={this.handleCanvasMouseDown}
       style={style}
       >
         {imgNode}
