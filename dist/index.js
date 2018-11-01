@@ -351,6 +351,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            _this.props.onCanvasMouseDown(e);
 	            _this.handleMouseDown(e);
 	        };
+	        _this.handleCanvasTouch = function (e) {
+	            // Click outside of image
+	            if (e.target.classList.contains('react-viewer-canvas')) {
+	                _this.handleCanvasMouseDown(e);
+	            }
+	        };
 	        _this.handleMouseDown = function (e) {
 	            if (!_this.props.visible || !_this.props.drag) {
 	                return;
@@ -458,7 +464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return React.createElement(
 	            'div',
-	            { className: this.props.prefixCls + '-canvas', onClick: this.handleCanvasMouseDown, style: style },
+	            { className: this.props.prefixCls + '-canvas', onMouseDown: this.handleCanvasMouseDown, onTouchStart: this.handleCanvasTouch, style: style },
 	            imgNode
 	        );
 	    };

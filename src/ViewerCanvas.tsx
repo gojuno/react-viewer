@@ -55,6 +55,13 @@ export default class ViewerCanvas extends React.Component<ViewerCanvasProps, Vie
     this.handleMouseDown(e);
   }
 
+  handleCanvasTouch = (e) => {
+    // Click outside of image
+    if (e.target.classList.contains('react-viewer-canvas')) {
+      this.handleCanvasMouseDown(e)
+    }
+  }
+
   handleMouseDown = (e) => {
     if (!this.props.visible || !this.props.drag) {
       return;
@@ -167,7 +174,8 @@ export default class ViewerCanvas extends React.Component<ViewerCanvasProps, Vie
     return (
       <div
       className={`${this.props.prefixCls}-canvas`}
-      onClick={this.handleCanvasMouseDown}
+      onMouseDown={this.handleCanvasMouseDown}
+      onTouchStart={this.handleCanvasTouch}
       style={style}
       >
         {imgNode}

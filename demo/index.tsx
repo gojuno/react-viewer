@@ -36,6 +36,10 @@ class App extends React.Component<any, Partial<State>> {
     });
   }
 
+  handleClose = (e) => {
+    this.setState({ visible: false });
+  }
+
   handleChangeInline = (e) => {
     this.setState({
       mode: 'inline',
@@ -126,7 +130,8 @@ class App extends React.Component<any, Partial<State>> {
           </Row>
           <Viewer
           visible={this.state.visible}
-          onClose={() => { this.setState({ visible: false }); } }
+          onClose={this.handleClose}
+          onMaskClick={this.handleClose}
           images={images}
           activeIndex={this.state.activeIndex}
           container={inline ? this.container : null}
